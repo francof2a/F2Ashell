@@ -1,0 +1,70 @@
+$help
+List of commands on 'Master Domain':
+	domain
+	exit
+	help
+	login
+	logout
+	mount
+	script
+	subdomain
+	system
+
+type 'help' + [command] to know the details of each command.
+<help version 1.0>
+
+$exit
+Ends F2Ashell.
+
+$domain
+Selects a specific domain of commands & data.
+	domain .		return to initial domain
+	domain [domain name]	select a specific domain
+
+The pre-loaded domains are:
+	root	empty set of commands by now.
+	system	commands of the OS console.
+
+$mount
+Loads a library (dll) and mounts it in a Shell Port.
+You can choose the domain to insert it.
+	mount [library name]		default domain: lib
+	mount [library name] [domain]
+
+example:
+	mount ShellPort_test testing
+
+$script
+Executes a script file (text file). 
+Usual file extension: ssf
+Each line is a shell line entry.
+	script [script File name]
+
+example:
+	script commands.ssf
+
+$subdomain
+Selects a specific sub-domain.
+A sub-domain is use in different ways, each library can
+have a specific behavior for a sub-domain commands.
+	subdomain .			return to initial sub-domain
+	subdomain [subdomain name]	select a specific sub-domain
+
+$system
+Executes a OS command.
+	system [string to system console].
+
+example:
+	system dir
+
+$login
+Takes an user name and a password to check.
+	login
+	login [user name]
+	login [user name] [password]
+
+Note: Use 'logout' to discard the user info.
+
+$logout
+Discard the user info.
+
