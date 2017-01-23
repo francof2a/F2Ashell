@@ -35,6 +35,9 @@ public:
 	void	vIni();
 	int		iSetLib(const char* libname);
 	void	vRun(ShellParamToPorts* params);
+
+	void	vCmdShow(ShellParamToPorts* params);
+	void	vCmdHelp(ShellParamToPorts* params);
 };
 
 #endif /* ROOTPORT_H_ */

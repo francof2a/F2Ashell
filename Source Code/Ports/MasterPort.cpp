@@ -30,6 +30,7 @@ MasterPort::~MasterPort() { }
 void	MasterPort::vIni(){
 	strcpy(MyDomain, "SuperDomain");
 	RunReturn = PortRunReturn_UC;
+	Credential = shell_PortFullAccess;
 }
 int		MasterPort::iSetLib(const char* libname, ShellParam* params){
 
@@ -46,6 +47,7 @@ void	MasterPort::vRun(ShellParam* params){
 	else if (!strcmp(params->pcGetCmd(), "script"))		vCmdScript(params);
 	else if (!strcmp(params->pcGetCmd(), "login"))		vCmdLogin(params);
 	else if (!strcmp(params->pcGetCmd(), "logout"))		vCmdLogout(params);
+	else if (!strcmp(params->pcGetCmd(), "unmount"))	vCmdUnmount(params);
 	else if (!strcmp(params->pcGetCmd(), "help")){
 		vCmdHelp(params);
 		RunReturn = PortRunReturn_byPass;
@@ -213,4 +215,12 @@ char*	MasterPort::pcReadPassword(){
 
 	Line[0] = '\0';
 	return Line;
+}
+void	MasterPort::vCmdUnmount(ShellParam* params){
+
+	if(params->uiGetNbrArg() == 1) params->vSetToDo(shell_ToDo_Unmount);
+	else{
+		params->vMessage("Format Error:", "error");
+		params->vMessage("unmount [library name]", "info");
+	}
 }

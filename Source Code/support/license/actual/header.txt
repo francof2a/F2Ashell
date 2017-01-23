@@ -1,11 +1,3 @@
-/*
- * LibPort.h
- *
- *  Created on: 15/07/2010
- *      Author: F2A
- *      e-mail:	f2a.arte@gmail.com
- */
-/*
 This file is part of F2Ashell.
 
 F2Ashell is free software: you can redistribute it and/or modify
@@ -20,24 +12,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with F2Ashell.  If not, see <http://www.gnu.org/licenses/>.
-*/
-#ifndef LIBPORT_H_
-#define LIBPORT_H_
-
-#include "../headers/ShellPort.h"
-
-class LibPort: public ShellPort {
-public:
-	LibPort();
-	virtual ~LibPort();
-
-public:
-	void	vIni();
-	int		iSetLib(const char* libname, ShellParamToPorts* params);
-	void	vRun(ShellParamToPorts* params);
-private:
-	shell_rok		rokSetCredential(const char* name);
-};
-
-
-#endif /* LIBSPORT_H_ */

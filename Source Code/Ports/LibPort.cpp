@@ -31,6 +31,7 @@ LibPort::LibPort() {
 	PortLibRun = NULL;
 	Library = NULL;
 	LibName[0] = '\0';
+	Credential = shell_PortNoAccess;
 }
 
 LibPort::~LibPort() { }

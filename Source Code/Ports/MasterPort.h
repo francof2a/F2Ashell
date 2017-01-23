@@ -49,6 +49,7 @@ private:
 	void	vCmdHelp(ShellParam* params);
 	void	vCmdLogin(ShellParam* params);
 	void	vCmdLogout(ShellParam* params);
+	void	vCmdUnmount(ShellParam* params);
 
 	char*	pcReadPassword();
 };

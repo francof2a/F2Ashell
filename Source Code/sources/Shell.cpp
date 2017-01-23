@@ -111,11 +111,9 @@ void	Shell::vProcessCmd(){
 	if(taken == PortRunReturn_UC || taken == PortRunReturn_byPass){
 		vShellTextColor(shell_message_color);
 		for(index = 0; index < NbrPorts; index++){
-			//printf("%s\n", Ports[index]->pcGetMyDomain());
 			if(!strcmp(Ports[index]->pcGetMyDomain(), Params.pcGetDomainName())){
 				Ports[index]->vRun((ShellParamToPorts*)&Params);
 				taken = Ports[index]->RunReturn;
-				//printf("%s, %d\n", Ports[index]->pcGetMyDomain(), taken);
 				if(taken == PortRunReturn_OK) break;
 
 			}
@@ -172,12 +170,15 @@ void	Shell::vShellShowInfo(){
 	Line[0] = '\0';
 	sprintf(Line, "F2A Shell - Version %s\nCopyright (C) 2010/07/21 - GPL Licensed", shell_version);
 	vShellMessage(Line, "untab");
+	vShellMessage("Please type 'help readme' to see important information", "untab");
+	/*
 	sprintf(Line, "This program comes with ABSOLUTELY NO WARRANTY");
 	vShellMessage(Line, "untab");
 	sprintf(Line, "This program doesn't assure the good functionality of third-party libraries");
 	vShellMessage(Line, "untab");
 	sprintf(Line, "This is free software, and you are welcome to redistribute it under certain conditions");
 	vShellMessage(Line, "untab");
+	*/
 	return;
 }
 void	Shell::vShellToDoInterpeter(){
@@ -187,14 +188,25 @@ void	Shell::vShellToDoInterpeter(){
 
 	switch(Params.uiGetToDo()){
 	case shell_ToDo_exit:	break;
+
 	case shell_ToDo_Mount:
 		strcpy(DomainName, Params.pcGetArg(1));
-		if(rokShellMount(DomainName, Params.pcGetArg(0), shell_PortType_lib) == shell_ok){ }
-		else vShellMessage("Library has not been found!", "error");
+		rokShellMount(DomainName, Params.pcGetArg(0), shell_PortType_lib);
 		break;
+
 	case shell_ToDo_script:
 		vShellScript(Params.pcGetArg(0));
 		break;
+
+	case shell_ToDo_Unmount:
+		rokShellUnmount(Params.pcGetArg(0), shell_PortType_lib);
+		break;
+
+	case shell_ToDo_Show:
+	case shell_ToDo_Users_Show:
+		vShellShow(Params.pcGetArg(0));
+		break;
+
 	default:
 
 		break;
@@ -218,7 +230,10 @@ shell_rok	Shell::rokShellMount(const char* domain, const char* name, const char*
 
 			vShellMessage("Library mounted!", "info");
 		}
-		else return shell_nok;
+		else{
+			vShellMessage("Library has not been found!", "error");
+			return shell_nok;
+		}
 	}
 
 	return shell_ok;
@@ -228,6 +243,7 @@ shell_rok	Shell::rokNewPort(const char* domain, const char* name, const char* ty
 	if(!strcmp(type, shell_PortType_lib)){
 		if(rokShellMount(domain, library, shell_PortType_lib) == shell_ok){
 			Ports[NbrPorts - 1]->rokSetMyName(name);
+			Ports[NbrPorts - 1]->rokSetCredential(shell_PortNoAccess);
 			vShellMessage("Library Port created!", "info");
 		}
 		else{
@@ -240,6 +256,7 @@ shell_rok	Shell::rokNewPort(const char* domain, const char* name, const char* ty
 		Ports[NbrPorts]->vIni();
 		Ports[NbrPorts]->rokSetMyDomain(domain);
 		Ports[NbrPorts]->rokSetMyName(name);
+		Ports[NbrPorts]->rokSetCredential(shell_PortFullAccess);
 		NbrPorts++;
 		vShellMessage("Root Port created!", "info");
 	}
@@ -284,6 +301,72 @@ void		Shell::vShellScript(const char* filename){
 	}
 	else vShellMessage("Script file has not been found!", "error");
 }
+shell_rok	Shell::rokDeletePort(unsigned int PortNbr, const char* domain, const char* name, const char* library){
+	unsigned int index = 0;
+	unsigned int index_aux = 0;
 
+	if(PortNbr != 0 && PortNbr >= shell_FirstUserPort){
+		if(PortNbr < NbrPorts){
+			delete[] &Ports[index];
+			for(index = PortNbr; index < NbrPorts - 1; index++) Ports[index] = Ports[index + 1];
+			NbrPorts--;
+		}
+	}
+	else if(domain != NULL && domain[0] != '\0'){
+		for(index = shell_FirstUserPort; index < NbrPorts; index++){
+			if(!strcmp(Ports[index]->pcGetMyDomain(), domain)){
+				delete[] &Ports[index_aux];
+				for(index_aux = index; index_aux < NbrPorts - 1; index_aux++) Ports[index_aux] = Ports[index_aux + 1];
+				NbrPorts--;
+			}
+		}
+	}
+	else if(name != NULL && name[0] != '\0'){
+		for(index = shell_FirstUserPort; index < NbrPorts; index++){
+			if(!strcmp(Ports[index]->pcGetMyName(), name)){
+				delete[] &Ports[index_aux];
+				for(index_aux = index; index_aux < NbrPorts - 1; index_aux++) Ports[index_aux] = Ports[index_aux + 1];
+				NbrPorts--;
+			}
+		}
+	}
+	else if(library != NULL && library[0] != '\0'){
+		for(index = shell_FirstUserPort; index < NbrPorts; index++){
+			if(!strcmp(Ports[index]->pcGetLibName(), library)){
+				delete[] &Ports[index_aux];
+				for(index_aux = index; index_aux < NbrPorts - 1; index_aux++) Ports[index_aux] = Ports[index_aux + 1];
+				NbrPorts--;
+			}
+		}
+	}
+	else return shell_nok;
 
+	return shell_ok;
+}
+shell_rok	Shell::rokShellUnmount(const char* name, const char* type){
+
+	if(!strcmp(type, shell_PortType_lib)){
+		if(rokDeletePort(0, NULL, NULL, name) == shell_nok){
+			vShellMessage("Library has not been found!", "error");
+			return shell_nok;
+		}
+		else vShellMessage("Library unmounted!", "info");
+	}
+	else return shell_nok;
+
+	return shell_ok;
+}
+void		Shell::vShellShow(const char* TypeOfInfo){
+	unsigned int 	index;
+	char			Line[shell_SizeLine];
+
+	if(!strcmp(TypeOfInfo, "ports")){
+		vShellMessage("Port n -name- @domain /lib: library\n", "info");
+		for(index = 0; index < NbrPorts; index++){
+			sprintf(Line, "Port %d -%s- @%s /lib: %s", index, Ports[index]->pcGetMyName(), Ports[index]->pcGetMyDomain(), Ports[index]->pcGetLibName());
+			vShellMessage(Line, "info");
+		}
+	}
+	else vShellMessage("Unknown type of info", "error");
+}
 

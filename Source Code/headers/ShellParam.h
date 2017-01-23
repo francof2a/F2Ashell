@@ -69,7 +69,7 @@ public:
 	void			vSetCmdDet(unsigned int cmddet);
 
 	unsigned int	uiGetToDo();
-	void			vSetToDo(unsigned int todo);
+	virtual void	vSetToDo(unsigned int todo);
 
 	void			vProcessLine();
 	void			vMessage(const char* message, const char* TypeOf);
@@ -88,6 +88,7 @@ private:
 	char				OneArg[shell_SizeLine];					//Arguments as a only string
 	unsigned int		NbrArg;									//Amount of arguments entered
 	unsigned int		CmdDet;									//Command detected flag
+protected:
 	unsigned int		ToDo;									//'To Do' Shell code. This specify a special task to do by the shell
 
 public:

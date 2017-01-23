@@ -33,3 +33,5 @@ ShellParamToPorts::~ShellParamToPorts() {
 	// TODO Auto-generated destructor stub
 }
 */
+
+void	ShellParamToPorts::vSetToDo(unsigned int todo){ ToDo = todo + shell_ToDo_PlusUsers; }

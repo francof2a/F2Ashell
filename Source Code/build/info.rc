@@ -1,0 +1,25 @@
+0 ICON "f2ashell.ico"
+1 VERSIONINFO
+FILEVERSION     1,1,3,0
+PRODUCTVERSION  1,1,3,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "080904E4"
+    BEGIN
+      VALUE "CompanyName", "F2A"
+      VALUE "FileDescription", "F2A shell - A debugging console"
+      VALUE "FileVersion", "1.1.3"
+      VALUE "InternalName", "F2Ashell"
+      VALUE "LegalCopyright", "Copyright (C) 2010/07/21 - GPL Licensed"
+      VALUE "OriginalFilename", "F2Ashell.exe"
+      VALUE "ProductName", "F2A shell"
+      VALUE "ProductVersion", "1.1.3"
+    END
+  END
+
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x809, 1252
+  END
+END

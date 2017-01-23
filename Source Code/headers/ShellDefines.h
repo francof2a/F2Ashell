@@ -32,10 +32,11 @@ along with F2Ashell.  If not, see <http://www.gnu.org/licenses/>.
 #define		shell_SizeArg			32
 #define		shell_maxnbrArg			8
 #define		shell_MaxSizeOneArg		shell_SizeArg * shell_maxnbrArg
-#define		shell_version			"1.1.2"
+#define		shell_version			"1.1.3"
 #define		shell_OS_windows
 #undef		shell_OS_linux
 #define		shell_HelpFilePath		"Dat/help_MasterPort.inf"
+#define		shell_HelpRootFilePath	"Dat/help_RootPort.inf"
 
 typedef		unsigned int			shell_rok;
 #define		shell_ok				1
@@ -45,9 +46,13 @@ typedef		unsigned int			shell_rok;
 #define		shell_domain_nbrCommonData		16
 
 //ToDos
+#define		shell_ToDo_PlusUsers	100
 #define		shell_ToDo_exit			1
 #define		shell_ToDo_Mount		2
 #define		shell_ToDo_script		3
+#define		shell_ToDo_Unmount		4
+#define		shell_ToDo_Show			5
+#define		shell_ToDo_Users_Show	shell_ToDo_Show + shell_ToDo_PlusUsers
 
 //Colors
 #ifndef		shell_colors
@@ -88,6 +93,12 @@ typedef		unsigned int			shell_rok;
 #define		shell_MasterPort
 #define		shell_RootPort			0
 #define		shell_SystemPort		1
+#define		shell_FirstLoopPorts	1
+#define		shell_FirstUserPort		2
 
+//Port's Credentials
+#define		shell_PortFullAccess	0
+#define		shell_PortPartialAccess	1
+#define		shell_PortNoAccess		-1
 #endif /* SHELLDEFINES_H_ */
 

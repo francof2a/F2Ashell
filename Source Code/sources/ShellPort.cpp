@@ -36,6 +36,7 @@ void	ShellPort::vIni(){
 	//printf("\tEl puerto no presenta función de inicialización\n");
 	strcpy(MyDomain, "generic");
 	RunReturn = PortRunReturn_UC;
+	Credential = shell_PortNoAccess;
 }
 int		ShellPort::iSetLib(const char* libname, ShellParamToPorts* params){
 
@@ -68,4 +69,21 @@ shell_rok	ShellPort::rokSetMyName(const char* name){
 
 	strcpy(PortName, name);
 	return shell_ok;
+}
+char *		ShellPort::pcGetLibName(){
+	static char LibName_buff[32];
+
+	strcpy(LibName_buff, LibName);
+	return LibName_buff;
+}
+shell_rok	ShellPort::rokSetCredential(int credential){
+
+	Credential = credential;
+	return shell_ok;
+}
+int			ShellPort::pcGetCredential(){
+	static int	credential_buff;
+
+	credential_buff = Credential;
+	return credential_buff;
 }

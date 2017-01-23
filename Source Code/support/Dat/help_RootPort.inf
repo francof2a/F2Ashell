@@ -1,0 +1,14 @@
+$help
+List of commands on 'Master Domain':	
+	show
+
+type 'help' + [command] to know the details of each command.
+<help version 1.1>
+
+$show
+Show specific information.
+
+show ports: show all ports, and their information, created into the shell
+
+sintaxis:
+	show ports

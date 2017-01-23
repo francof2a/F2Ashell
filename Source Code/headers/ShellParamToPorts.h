@@ -32,6 +32,7 @@ public:
 //	ShellParamToPorts();
 //	virtual ~ShellParamToPorts();
 
+	void			vSetToDo(unsigned int todo);
 private:
 	//Forbidden Functions
 	void 			vSetTag(unsigned int tag);
@@ -42,7 +43,6 @@ private:
 	shell_rok 		rokSetOneArg(const char *arg);
 	shell_rok		rokSetNbrArg(unsigned int narg);
 	void			vSetCmdDet(unsigned int cmddet);
-	void			vSetToDo(unsigned int todo);
 	void			vProcessLine();
 };
 

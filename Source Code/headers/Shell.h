@@ -59,6 +59,9 @@ private:
 	shell_rok	rokShellMount(const char* domain, const char* name, const char* type);
 	shell_rok	rokNewPort(const char* domain, const char* name, const char* type, const char* library);
 	void		vShellScript(const char* filename);
+	shell_rok	rokDeletePort(unsigned int PortNbr, const char* domain, const char* name, const char* library);
+	shell_rok	rokShellUnmount(const char* name, const char* type);
+	void		vShellShow(const char* TypeOfInfo);
 
 private:
 	ShellParam		Params;									//Shell's Parameters

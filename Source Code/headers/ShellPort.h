@@ -55,6 +55,9 @@ public:
 	shell_rok		rokSetMyDomain(const char* domain);
 	char *			pcGetMyName();
 	shell_rok		rokSetMyName(const char* name);
+	char *			pcGetLibName();
+	shell_rok		rokSetCredential(int credential);
+	int				pcGetCredential();
 
 public:
 	unsigned int	RunReturn;					//Variable to return the command processed status
@@ -65,6 +68,7 @@ protected:
 	HMODULE			Library;					//Pointer to Library
 	char			LibName[32];				//Library's name
 	char			PortName[PortSizeName];		//Port's name
+	int				Credential;					//Number that represents the privileges in the shell
 };
 
 #endif /* SHELLPORT_H_ */
