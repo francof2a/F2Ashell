@@ -14,7 +14,7 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-<configuration artifactName="F2Ashell" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.debug.913233954" name="Debug" parent="cdt.managedbuild.config.gnu.mingw.exe.debug">
+<configuration artifactName="F2Ashell" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" cleanCommand="rm -rf" description="" id="cdt.managedbuild.config.gnu.mingw.exe.debug.913233954" name="Debug" parent="cdt.managedbuild.config.gnu.mingw.exe.debug" prebuildStep="windres ${workspace_loc:/F2Ashell/build}\info.rc -O coff -o ${workspace_loc:/F2Ashell/build}\info.res">
 <folderInfo id="cdt.managedbuild.config.gnu.mingw.exe.debug.913233954." name="/" resourcePath="">
 <toolChain id="cdt.managedbuild.toolchain.gnu.mingw.exe.debug.1641481865" name="MinGW GCC" superClass="cdt.managedbuild.toolchain.gnu.mingw.exe.debug">
 <targetPlatform id="cdt.managedbuild.target.gnu.platform.mingw.exe.debug.998172795" name="Debug Platform" superClass="cdt.managedbuild.target.gnu.platform.mingw.exe.debug"/>
@@ -35,6 +35,9 @@
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug.782672271" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.debug"/>
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug.181813893" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.debug">
+<option id="gnu.cpp.link.option.userobjs.416860666" name="Other objects" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/F2Ashell/build/info.res}&quot;"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.874857379" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 <additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -44,7 +47,7 @@
 </folderInfo>
 <sourceEntries>
 <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
-<entry excluding="sources" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="Third-Party-Libs|Support|sources" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 </sourceEntries>
 </configuration>
 </storageModule>
@@ -666,6 +669,9 @@
 </tool>
 <tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release.1151336942" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release"/>
 <tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release.1592530082" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release">
+<option id="gnu.cpp.link.option.userobjs.775208797" superClass="gnu.cpp.link.option.userobjs" valueType="userObjs">
+<listOptionValue builtIn="false" value="&quot;${workspace_loc:/F2Ashell/build/info.res}&quot;"/>
+</option>
 <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.908827288" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 <additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -675,7 +681,7 @@
 </folderInfo>
 <sourceEntries>
 <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="sources"/>
-<entry excluding="sources" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+<entry excluding="Third-Party-Libs|Support|sources" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 </sourceEntries>
 </configuration>
 </storageModule>

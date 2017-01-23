@@ -23,8 +23,6 @@ along with F2Ashell.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include	"./headers/Shell.h"
 
-typedef void (*function1_ptr) ();
-function1_ptr function1 = NULL;
 
 int main(){
 	Shell	console;

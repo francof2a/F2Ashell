@@ -27,12 +27,12 @@ along with F2Ashell.  If not, see <http://www.gnu.org/licenses/>.
 
 #define		shell_root_promt		">>"
 #define		shell_NameMaxSize		32
-#define		shell_SizeLine			256
+#define		shell_SizeLine			512		// v1.1.4: 256 to 512
 #define		shell_SizeCmd			32
 #define		shell_SizeArg			32
-#define		shell_maxnbrArg			8
+#define		shell_maxnbrArg			16		// v1.1.4: 8 to 16
 #define		shell_MaxSizeOneArg		shell_SizeArg * shell_maxnbrArg
-#define		shell_version			"1.1.3"
+#define		shell_version			"1.1.4"
 #define		shell_OS_windows
 #undef		shell_OS_linux
 #define		shell_HelpFilePath		"Dat/help_MasterPort.inf"

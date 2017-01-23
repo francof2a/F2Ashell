@@ -1,0 +1,72 @@
+$help
+Commands of MDIG library:
+	Comment
+	help
+	Nop
+	ReadLTable
+	ReadReg
+	Test	
+	Translate
+	WriteLTable
+	WriteReg
+
+type 'help' + [command] to know the details of each command.
+<help version 1.0>
+
+$Comment
+Insert a text comment into the data file.
+
+sintaxis:
+	Comment [text]
+
+$Nop
+Insert a NOP command
+
+Sintaxis:
+	Nop
+	Nop [id]
+
+$ReadLTable
+Insert a command to read a LONG-TABLE
+
+Sintaxis:
+	ReadLTable [Address Ini (32 bits)] [Lenght (< 255)]
+	ReadLTable [id] [Address Ini (32 bits)] [Lenght (< 255)]
+
+$ReadReg
+Insert a command to read a REGISTER
+	
+Sintaxis:
+	ReadReg [address]
+	ReadReg [id] [address]
+
+$Test
+Test function. Its functionality is determined by the programmer.
+
+Sintaxis:
+	Test
+	Test [...]
+
+$Translate
+Convert the data file into the RBPE data file
+
+Sintaxis:
+	Translate
+	Translate [rbpe file name]
+
+$WriteLTable
+Insert a command to write a LONG-TABLE
+
+Sintaxis:
+
+	WriteLTable [text file to extract] [Address (32 bits)]
+	WriteLTable [text file to extract] [id] [Address (32 bits)]
+	
+In the text file, do not exceed 128 values - one value per line (8 bits).
+
+$WriteReg
+Insert a command to write a REGISTER
+
+Sintaxis:
+	WriteReg [Address] [Data (16 bits)]
+	WriteReg [id] [Address] [Data (16 bits)]

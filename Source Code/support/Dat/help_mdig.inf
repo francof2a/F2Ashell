@@ -1,0 +1,31 @@
+$help
+Commands of MDIG library:
+	Comment
+	Delay
+	help
+	Nop
+	ReadLTable
+	ReadReg
+	SramNewFile
+	StarLog
+	StopLog
+	Test	
+	Translate
+	UartConfig
+	WriteLTable
+	WriteReg
+
+MDIG virtual module:
+	MdigLoadWFT
+	MdigReadReg
+	MdigSetId
+	Mdig_Synth_on
+	MdigShowRegs
+	MdigWriteReg
+
+type 'help' + [command] to know the details of each command.
+<help version 1.0>
+
+$Comment
+Insert a text comment into the data file.
+	Comment [text]
